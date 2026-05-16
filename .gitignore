@@ -1,0 +1,32 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*.token
+*.key
+*.pem
+credentials/
+master_credentials.md
+
+# Claude/local state
+.claude/settings.local.json
+.claude.local/
+.claude/cache/
+*.log
+
+# MCP real configs
+.mcp.json
+**/.mcp.json
+
+# OS/editor
+.DS_Store
+.vscode/settings.json
+.idea/
+
+# Node/Python
+node_modules/
+__pycache__/
+.venv/
+venv/
+dist/
+build/

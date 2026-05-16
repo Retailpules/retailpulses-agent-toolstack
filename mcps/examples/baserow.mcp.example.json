@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "baserow": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "example-baserow-mcp"
+      ],
+      "env": {
+        "BASEROW_TOKEN": "${BASEROW_TOKEN}"
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "mercari_listing_draft_json": {
+      "type": "object"
+    },
+    "qa_report": {
+      "type": "object"
+    },
+    "missing_data_report": {
+      "type": "object"
+    },
+    "operator_review_checklist": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "qa_report",
+    "missing_data_report",
+    "operator_review_checklist"
+  ],
+  "additionalProperties": true
+}

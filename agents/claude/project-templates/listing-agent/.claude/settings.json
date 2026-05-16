@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "ask": [
+      "Bash(node *)",
+      "Bash(python *)"
+    ],
+    "deny": [
+      "Bash(wrangler deploy *)",
+      "Bash(git push --force *)"
+    ]
+  }
+}

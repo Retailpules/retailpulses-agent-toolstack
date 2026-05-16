@@ -1,0 +1,22 @@
+{
+  "mercari_listing_draft_json": {
+    "title": "サンプル商品タイトル",
+    "description": "サンプル説明文"
+  },
+  "qa_report": {
+    "status": "needs_review",
+    "flags": [
+      "sample_data"
+    ]
+  },
+  "missing_data_report": {
+    "missing": [
+      "real product data"
+    ]
+  },
+  "operator_review_checklist": [
+    "価格を確認",
+    "送料条件を確認",
+    "画像を確認"
+  ]
+}

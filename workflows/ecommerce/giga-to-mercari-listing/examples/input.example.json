@@ -1,0 +1,7 @@
+{
+  "giga_product_id": "GIGA-EXAMPLE-001",
+  "target_platform": "mercari",
+  "target_shop": "homebliss",
+  "listing_mode": "draft_only",
+  "operator_notes": "MVP sample only"
+}

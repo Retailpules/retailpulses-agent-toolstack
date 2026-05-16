@@ -1,0 +1,32 @@
+id: domain.workflow-id
+name: Workflow Name
+version: 0.1.0
+status: draft
+owner: Retailpulses
+risk_level: low
+
+goal: >
+  Describe the business goal.
+
+trigger:
+  type: manual
+
+inputs:
+  schema: ./inputs.schema.json
+  required: []
+
+outputs:
+  schema: ./outputs.schema.json
+  artifacts: []
+
+dependencies:
+  scripts: []
+  skills: []
+  mcps: []
+  agents: []
+
+safety:
+  requires_plan_approval: true
+  allow_live_external_write: false
+
+steps: []

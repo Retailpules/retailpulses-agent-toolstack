@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "giga_product_id": {
+      "type": "string"
+    },
+    "target_platform": {
+      "type": "string",
+      "enum": [
+        "mercari"
+      ]
+    },
+    "target_shop": {
+      "type": "string"
+    },
+    "listing_mode": {
+      "type": "string",
+      "enum": [
+        "draft_only",
+        "qa_only"
+      ]
+    },
+    "operator_notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "giga_product_id",
+    "target_platform",
+    "target_shop",
+    "listing_mode"
+  ],
+  "additionalProperties": false
+}

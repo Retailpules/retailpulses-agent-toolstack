@@ -1,0 +1,99 @@
+id: ecommerce.giga-to-mercari-listing
+name: GigaB2B to Mercari Listing
+version: 0.1.0
+status: assisted
+owner: Retailpulses
+risk_level: medium
+
+goal: >
+  Convert selected GigaB2B product data into a Mercari-ready listing draft
+  with validated Japanese copy, category attributes, pricing checks, and QA flags.
+
+trigger:
+  type: manual_or_job_queue
+  source: baserow_or_airtable
+  table: listing_jobs
+
+inputs:
+  schema: ./inputs.schema.json
+  required:
+    - giga_product_id
+    - target_platform
+    - target_shop
+    - listing_mode
+
+outputs:
+  schema: ./outputs.schema.json
+  artifacts:
+    - mercari_listing_draft_json
+    - qa_report
+    - missing_data_report
+    - operator_review_checklist
+
+dependencies:
+  scripts:
+    - scripts/giga/fetch-product.placeholder.md
+    - scripts/listing/normalize-product.placeholder.md
+    - scripts/mercari/build-listing-draft.placeholder.md
+    - scripts/validate/validate-mercari-listing.placeholder.md
+  skills:
+    - skills/ecommerce/mercari-listing-copy.md
+    - skills/ecommerce/product-title-seo.md
+    - skills/ecommerce/shipping-fee-message.md
+  mcps:
+    - mcps/examples/baserow.mcp.example.json
+    - mcps/examples/filesystem.mcp.example.json
+  agents:
+    planner: agents/claude/project-templates/listing-agent/
+    reviewer: agents/codex/prompts/audit-listing-workflow.md
+
+permissions:
+  read:
+    - giga_product_data
+    - baserow_listing_jobs
+  write:
+    - local_artifacts
+    - baserow_listing_drafts
+  forbidden:
+    - live_mercari_upload
+    - price_change_without_approval
+    - customer_message_send
+
+safety:
+  requires_plan_approval: true
+  allow_direct_upload: false
+  allow_price_update: false
+  allow_customer_message: false
+
+steps:
+  - id: fetch_giga_product
+    type: script
+    script: scripts/giga/fetch-product.placeholder.md
+    output: raw_giga_product
+
+  - id: normalize_product
+    type: script
+    script: scripts/listing/normalize-product.placeholder.md
+    input: raw_giga_product
+    output: normalized_product
+
+  - id: generate_mercari_copy
+    type: agent_skill
+    skill: skills/ecommerce/mercari-listing-copy.md
+    input: normalized_product
+    output: mercari_copy_draft
+
+  - id: validate_listing
+    type: script
+    script: scripts/validate/validate-mercari-listing.placeholder.md
+    input: mercari_copy_draft
+    output: qa_report
+
+  - id: create_listing_draft
+    type: script
+    script: scripts/mercari/build-listing-draft.placeholder.md
+    input:
+      - normalized_product
+      - mercari_copy_draft
+      - qa_report
+    output: mercari_listing_draft_json
